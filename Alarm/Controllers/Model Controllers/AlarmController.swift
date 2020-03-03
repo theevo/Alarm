@@ -15,6 +15,17 @@ class AlarmController {
     //Singleton
     static let shared = AlarmController()
     
+    // MARK: - Mock data
+    var mockAlarms: [Alarm] {
+        let wakeUp = Alarm(fireDate: Date(), name: "Rise and Shine", enabled: true)
+        let classTime = Alarm(fireDate: Date(), name: "Class Time", enabled: false)
+        return [wakeUp, classTime]
+    }
+    
+    init() {
+        self.alarms = self.mockAlarms
+    }
+    
     // MARK: - CRUD
     //Create
     func addAlarm(fireDate: Date, name: String, enabled: Bool) -> Alarm {
