@@ -26,9 +26,10 @@ class AlarmListTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "alarmCell", for: indexPath)
-
-        // Configure the cell...
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmCell", for: indexPath) as? SwitchTableViewCell
+            else {return UITableViewCell()}
+        let alarm = AlarmController.shared.alarms[indexPath.row]
+        cell.alarm = alarm
 
         return cell
     }

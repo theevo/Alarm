@@ -25,6 +25,8 @@ class Alarm {
     var fireTimeAsString: String {
         get {
             let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .none
+            dateFormatter.timeStyle = .short
             return dateFormatter.string(from: fireDate)
         }
     }
@@ -35,7 +37,6 @@ class Alarm {
         self.enabled = enabled
         self.uuid = UUID().uuidString
     }
-    
     
 }//End of Class
 

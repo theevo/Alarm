@@ -9,7 +9,11 @@
 import UIKit
 
 class SwitchTableViewCell: UITableViewCell {
-
+    // MARK: - Properties
+    
+    //Landing Pad
+    var alarm: Alarm?
+    
     // MARK: - IBOutlets
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -32,5 +36,12 @@ class SwitchTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
-}
+    // MARK: - Helper Functiosn
+    func updateViews() {
+        guard let alarmToView = alarm else { return }
+        
+        nameLabel.text = alarmToView.name
+        alarmSwitch.isOn = alarmToView.enabled
+        // timeLabel - how do we set the time in a date picker?
+    }
+}//End Class
