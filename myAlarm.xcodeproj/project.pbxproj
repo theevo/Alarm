@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15983753240DBB0E008F3D0D /* AlarmListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983752240DBB0E008F3D0D /* AlarmListTableViewController.swift */; };
+		15983755240DBE26008F3D0D /* AlarmDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983754240DBE26008F3D0D /* AlarmDetailTableViewController.swift */; };
+		15983757240DBED1008F3D0D /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983756240DBED1008F3D0D /* SwitchTableViewCell.swift */; };
+		15983759240DCD8B008F3D0D /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15983758240DCD8B008F3D0D /* Alarm.swift */; };
+		1598375C240DD2D5008F3D0D /* AlarmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1598375B240DD2D5008F3D0D /* AlarmController.swift */; };
 		F7C2038C2131AD3400C3FC77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C2038B2131AD3400C3FC77 /* AppDelegate.swift */; };
 		F7C203912131AD3400C3FC77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7C2038F2131AD3400C3FC77 /* Main.storyboard */; };
 		F7C203932131AD3400C3FC77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7C203922131AD3400C3FC77 /* Assets.xcassets */; };
@@ -14,6 +19,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		15983752240DBB0E008F3D0D /* AlarmListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListTableViewController.swift; sourceTree = "<group>"; };
+		15983754240DBE26008F3D0D /* AlarmDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailTableViewController.swift; sourceTree = "<group>"; };
+		15983756240DBED1008F3D0D /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		15983758240DCD8B008F3D0D /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Alarm.swift; path = "myAlarm/Controllers/View Controllers/Alarm.swift"; sourceTree = SOURCE_ROOT; };
+		1598375B240DD2D5008F3D0D /* AlarmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmController.swift; sourceTree = "<group>"; };
 		F7C203882131AD3400C3FC77 /* myAlarm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myAlarm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7C2038B2131AD3400C3FC77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7C203902131AD3400C3FC77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -33,6 +43,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15983751240DBA6D008F3D0D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				15983752240DBB0E008F3D0D /* AlarmListTableViewController.swift */,
+				15983754240DBE26008F3D0D /* AlarmDetailTableViewController.swift */,
+				15983756240DBED1008F3D0D /* SwitchTableViewCell.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		1598375A240DD2BC008F3D0D /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1598375B240DD2D5008F3D0D /* AlarmController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		F7C2037F2131AD3400C3FC77 = {
 			isa = PBXGroup;
 			children = (
@@ -52,6 +80,7 @@
 		F7C2038A2131AD3400C3FC77 /* myAlarm */ = {
 			isa = PBXGroup;
 			children = (
+				F7C2038F2131AD3400C3FC77 /* Main.storyboard */,
 				F7C203AA2131B1F600C3FC77 /* Resources */,
 				F7C203A92131B1E300C3FC77 /* Views */,
 				F7C203A72131B1D500C3FC77 /* Models */,
@@ -63,6 +92,7 @@
 		F7C203A72131B1D500C3FC77 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				15983758240DCD8B008F3D0D /* Alarm.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -70,6 +100,8 @@
 		F7C203A82131B1DB00C3FC77 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				1598375A240DD2BC008F3D0D /* Model Controllers */,
+				15983751240DBA6D008F3D0D /* View Controllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -85,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				F7C2038B2131AD3400C3FC77 /* AppDelegate.swift */,
-				F7C2038F2131AD3400C3FC77 /* Main.storyboard */,
 				F7C203922131AD3400C3FC77 /* Assets.xcassets */,
 				F7C203942131AD3400C3FC77 /* LaunchScreen.storyboard */,
 				F7C203972131AD3400C3FC77 /* Info.plist */,
@@ -164,7 +195,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15983755240DBE26008F3D0D /* AlarmDetailTableViewController.swift in Sources */,
+				15983757240DBED1008F3D0D /* SwitchTableViewCell.swift in Sources */,
+				15983759240DCD8B008F3D0D /* Alarm.swift in Sources */,
 				F7C2038C2131AD3400C3FC77 /* AppDelegate.swift in Sources */,
+				15983753240DBB0E008F3D0D /* AlarmListTableViewController.swift in Sources */,
+				1598375C240DD2D5008F3D0D /* AlarmController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
