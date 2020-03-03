@@ -44,8 +44,8 @@ class SwitchTableViewCell: UITableViewCell {
     func updateViews() {
         guard let alarmToView = alarm else {return}
         
+        timeLabel.text = alarmToView.fireTimeAsString
         nameLabel.text = alarmToView.name
         alarmSwitch.isOn = alarmToView.enabled
-        // timeLabel - how do we set the time in a date picker?
     }
 }//End Class
