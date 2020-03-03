@@ -12,7 +12,11 @@ class SwitchTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     //Landing Pad
-    var alarm: Alarm?
+    var alarm: Alarm? {
+        didSet {
+            updateViews()
+        }
+    }
     
     // MARK: - IBOutlets
     @IBOutlet weak var timeLabel: UILabel!
@@ -38,7 +42,7 @@ class SwitchTableViewCell: UITableViewCell {
     }
     // MARK: - Helper Functiosn
     func updateViews() {
-        guard let alarmToView = alarm else { return }
+        guard let alarmToView = alarm else {return}
         
         nameLabel.text = alarmToView.name
         alarmSwitch.isOn = alarmToView.enabled

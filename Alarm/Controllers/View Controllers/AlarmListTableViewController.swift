@@ -14,14 +14,15 @@ class AlarmListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print("Hello")
+//        print(AlarmController.shared.alarms[0].name)
     }
     
     // MARK: - Table view data source
 
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return AlarmController.shared.alarms.count
     }
 
     
@@ -30,7 +31,7 @@ class AlarmListTableViewController: UITableViewController {
             else {return UITableViewCell()}
         let alarm = AlarmController.shared.alarms[indexPath.row]
         cell.alarm = alarm
-
+        cell.updateViews()
         return cell
     }
     
@@ -43,17 +44,17 @@ class AlarmListTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            // 2. delete alarm from source of truth
+            let index = indexPath.row
+            AlarmController.shared.alarms.remove(at: index)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

@@ -23,7 +23,7 @@ class AlarmController {
     }
     
     init() {
-        self.alarms = self.mockAlarms
+     self.alarms = self.mockAlarms
     }
     
     // MARK: - CRUD
