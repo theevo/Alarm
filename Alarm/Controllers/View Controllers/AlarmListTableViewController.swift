@@ -1,21 +1,14 @@
 //
 //  AlarmListTableViewController.swift
-//  myAlarm
+//  Alarm
 //
-//  Created by Jake Haslam on 3/2/20.
-//  Copyright © 2020 trevorAdcock. All rights reserved.
+//  Created by theevo on 3/2/20.
+//  Copyright © 2020 theevo. All rights reserved.
 //
 
 import UIKit
 
 class AlarmListTableViewController: UITableViewController {
-    
-    // MARK: - IBOutlets
-    
-    @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var alarmSwitch: UISwitch!
-    
     
     // MARK: - Lifecycle Functions
 
@@ -23,13 +16,6 @@ class AlarmListTableViewController: UITableViewController {
         super.viewDidLoad()
 
     }
-    
-    
-    // MARK: - IBActions
-
-    @IBAction func switchValueChanged(_ sender: Any) {
-    }
-    
     
     // MARK: - Table view data source
 
@@ -64,7 +50,7 @@ class AlarmListTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 

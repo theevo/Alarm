@@ -1,10 +1,12 @@
 //
 //  Alarm.swift
-//  myAlarm
+//  Alarm
 //
-//  Created by Jake Haslam on 3/2/20.
-//  Copyright © 2020 trevorAdcock. All rights reserved.
+//  Created by theevo on 3/2/20.
+//  Copyright © 2020 theevo. All rights reserved.
 //
+
+import Foundation
 
 import UIKit
 /**
@@ -27,24 +29,23 @@ class Alarm {
         }
     }
     
-    init(fireDate: Date, name: String, enabled: Bool, uuid: String = UUID().uuidString) {
+    init(fireDate: Date, name: String, enabled: Bool) {
         self.fireDate = fireDate
         self.name = name
         self.enabled = enabled
-        //self.uuid = UUID().uuidString
+        self.uuid = UUID().uuidString
     }
     
     
 }//End of Class
 
 extension Alarm: Equatable {
+    
     static func == (lhs: Alarm, rhs: Alarm) -> Bool {
        return lhs.fireDate == rhs.fireDate &&
         lhs.name == rhs.name &&
         lhs.enabled == rhs.enabled &&
         lhs.uuid == rhs.uuid
-        
     }
-    
-    
+        
 }

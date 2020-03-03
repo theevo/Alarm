@@ -1,9 +1,9 @@
 //
 //  AlarmDetailTableViewController.swift
-//  myAlarm
+//  Alarm
 //
-//  Created by Jake Haslam on 3/2/20.
-//  Copyright © 2020 trevorAdcock. All rights reserved.
+//  Created by theevo on 3/2/20.
+//  Copyright © 2020 theevo. All rights reserved.
 //
 
 import UIKit
@@ -66,7 +66,7 @@ class AlarmDetailTableViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
     */
 
@@ -84,4 +84,4 @@ class AlarmDetailTableViewController: UITableViewController {
         return true
     }
     */
-}//End of Class
+}

@@ -1,9 +1,9 @@
 //
 //  AlarmController.swift
-//  myAlarm
+//  Alarm
 //
-//  Created by Jake Haslam on 3/2/20.
-//  Copyright © 2020 trevorAdcock. All rights reserved.
+//  Created by theevo on 3/2/20.
+//  Copyright © 2020 theevo. All rights reserved.
 //
 
 import Foundation
@@ -35,5 +35,3 @@ class AlarmController {
         alarms.remove(at: index)
     }
 }//End of Class
-
-
