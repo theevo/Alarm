@@ -16,7 +16,7 @@ Creates our Setting Object- *MODEL*
 - icon: `UIImage` that matches the Setting
 -isOn: The `Bool` to designate whether the setting is on our not
 */
-class Alarm {
+class Alarm: Codable {
     var fireDate: Date
     var name: String
     var enabled: Bool
