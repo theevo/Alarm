@@ -67,7 +67,7 @@
                                     <outlet property="alarmSwitch" destination="Hob-c6-CWe" id="8vG-oE-zCi"/>
                                     <outlet property="nameLabel" destination="Afy-kC-ACh" id="LRA-Qu-WCV"/>
                                     <outlet property="timeLabel" destination="yKw-8f-4yO" id="86g-SH-wfR"/>
-                                    <segue destination="DNq-1m-Ga1" kind="show" id="afQ-fR-YtW"/>
+                                    <segue destination="DNq-1m-Ga1" kind="show" identifier="toDetailVC" id="afQ-fR-YtW"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

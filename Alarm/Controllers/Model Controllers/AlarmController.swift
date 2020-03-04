@@ -17,6 +17,7 @@ class AlarmController {
     
     // MARK: - Mock data
     var mockAlarms: [Alarm] {
+//        let sixThirty = Da
         let wakeUp = Alarm(fireDate: Date(), name: "Rise and Shine", enabled: true)
         let classTime = Alarm(fireDate: Date(), name: "Class Time", enabled: false)
         return [wakeUp, classTime]
@@ -44,5 +45,9 @@ class AlarmController {
     func delete(alarm: Alarm) {
         guard let index = alarms.firstIndex(of: alarm) else {return}
         alarms.remove(at: index)
+    }
+    
+    static func toggleIsOn(for alarm: Alarm) {
+        alarm.enabled = !alarm.enabled
     }
 }//End of Class
