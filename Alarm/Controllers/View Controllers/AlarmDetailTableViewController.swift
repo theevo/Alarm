@@ -13,9 +13,9 @@ class AlarmDetailTableViewController: UITableViewController {
     var alarm: Alarm? {
         didSet {
             alarmIsOn = alarm?.enabled ?? true
-            loadViewIfNeeded()
-            updateViews()
-
+            loadViewIfNeeded() //why is this safest??
+            updateViews() // q: why do we call this here?
+            //why isnt updateAlarm called here?
             }
     }
     var alarmIsOn: Bool = true
@@ -39,8 +39,18 @@ class AlarmDetailTableViewController: UITableViewController {
     // MARK: - IBActions
     
     @IBAction func enableButtonTapped(_ sender: Any) {
+        alarmIsOn = !alarmIsOn
+        updateAlarm()
     }
     @IBAction func saveButtonTapped(_ sender: Any) {
+        guard let alarmTitle = alarmName.text,
+            let dateTitle = timePicker?.date else {return}
+        if let alarm = alarm {
+            AlarmController.shared.update(alarm: alarm, fireDate: dateTitle, name: alarmTitle, enabled: alarmIsOn)
+        } else {
+            AlarmController.shared.addAlarm(fireDate: dateTitle, name: alarmTitle, enabled: alarmIsOn)
+        }
+        navigationController?.popViewController(animated: true)
     }
     
 

@@ -76,7 +76,13 @@
                             <outlet property="delegate" destination="Qbn-1b-wC5" id="JtG-cT-2mz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="op5-48-b86"/>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="op5-48-b86">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Anu-bW-Rrr">
+                            <connections>
+                                <segue destination="DNq-1m-Ga1" kind="show" id="WJf-zT-Yvi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCA-aI-8tm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -210,4 +216,7 @@
             <point key="canvasLocation" x="-99" y="161"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="WJf-zT-Yvi"/>
+    </inferredMetricsTieBreakers>
 </document>
