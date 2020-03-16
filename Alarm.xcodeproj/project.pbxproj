@@ -96,8 +96,8 @@
 		AC775082240DEEA100641A1F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				AC775085240DEEB000641A1F /* Model Controllers */,
 				AC775084240DEEAC00641A1F /* View Controllers */,
+				AC775085240DEEB000641A1F /* Model Controllers */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";

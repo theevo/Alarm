@@ -15,6 +15,18 @@ class AlarmController {
     //Singleton
     static let shared = AlarmController()
     
+    static let alarmNamePlaceholders = [
+        "Walk the dog",
+        "Buy wine",
+        "Douse the kitchen in bleach",
+        "Give roommate a no-touch high five",
+        "Drive to Lehi",
+        "Buy flowers for schnookums",
+        "Fix .gitignore_global",
+        "Install oh my zsh",
+        "Stock up on toilet paper"
+    ]
+    
     // MARK: - Mock data
     var mockAlarms: [Alarm] {
 //        let sixThirty = Da

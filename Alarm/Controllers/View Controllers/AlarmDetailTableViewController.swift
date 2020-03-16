@@ -45,9 +45,12 @@ class AlarmDetailTableViewController: UITableViewController {
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let alarmTitle = alarmName.text,
             let dateTitle = timePicker?.date else {return}
+        
+        // UPDATE
         if let alarm = alarm {
             AlarmController.shared.update(alarm: alarm, fireDate: dateTitle, name: alarmTitle, enabled: alarmIsOn)
         } else {
+            // CREATE
             AlarmController.shared.addAlarm(fireDate: dateTitle, name: alarmTitle, enabled: alarmIsOn)
         }
         navigationController?.popViewController(animated: true)
@@ -60,9 +63,14 @@ class AlarmDetailTableViewController: UITableViewController {
     // MARK: - Helper Functions
     
     func updateViews() {
-        guard let alarm = self.alarm else { return }
-        timePicker.setDate(alarm.fireDate, animated: false)
-        alarmName.text = alarm.name
+        if let alarm = self.alarm {
+            timePicker.setDate(alarm.fireDate, animated: false)
+            alarmName.text = alarm.name
+        }  else {
+            let newAlarmTime = Date().addingTimeInterval(25.0 * 60.0) // param = number of seconds
+            timePicker.setDate(newAlarmTime, animated: true)
+            alarmName.text = AlarmController.alarmNamePlaceholders.randomElement()
+        }
     }
     
     func updateAlarm() {
