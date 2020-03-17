@@ -8,8 +8,16 @@
 
 import UIKit
 
+protocol SwitchTableViewCellDelegate: class {
+    func switchCellSwitchValueChanged(cell: SwitchTableViewCell)
+}
+
 class SwitchTableViewCell: UITableViewCell {
+    
     // MARK: - Properties
+    
+    weak var delegate: SwitchTableViewCellDelegate?
+    
     
     //Landing Pad
     var alarm: Alarm? {
@@ -17,6 +25,7 @@ class SwitchTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+    
     
     // MARK: - IBOutlets
     @IBOutlet weak var timeLabel: UILabel!
@@ -27,20 +36,20 @@ class SwitchTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+    
     
     // MARK: - IBActions
 
     @IBAction func switchValueChanged(_ sender: Any) {
+        delegate?.switchCellSwitchValueChanged(cell: self)
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    // MARK: - Helper Functiosn
+    
+    
+    
+    // MARK: - Helper Function
+    
     func updateViews() {
         guard let alarmToView = alarm else {return}
         

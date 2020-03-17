@@ -71,7 +71,7 @@ class AlarmDetailTableViewController: UITableViewController, AlarmScheduler {
             timePicker.setDate(alarm.fireDate, animated: false)
             alarmName.text = alarm.name
         }  else {
-            let newAlarmTime = Date().addingTimeInterval(25.0 * 60.0) // param = number of seconds
+            let newAlarmTime = Date().addingTimeInterval(1.0 * 60.0) // param = number of seconds
             timePicker.setDate(newAlarmTime, animated: true)
             alarmName.text = AlarmController.alarmNamePlaceholders.randomElement()
         }

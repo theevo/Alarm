@@ -19,10 +19,7 @@ class AlarmListTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
-    
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 150.0
-//    }
+
     
     // MARK: - Table view data source
 
@@ -37,15 +34,17 @@ class AlarmListTableViewController: UITableViewController {
             else {return UITableViewCell()}
         let alarm = AlarmController.shared.alarms[indexPath.row]
         cell.alarm = alarm
+        cell.delegate = self
         cell.updateViews()
         return cell
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // 2. delete alarm from source of truth
+            
             let index = indexPath.row
-            AlarmController.shared.alarms.remove(at: index)
+
+            AlarmController.shared.delete(at: index)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -67,3 +66,25 @@ class AlarmListTableViewController: UITableViewController {
     
 
 }//End of Class
+
+
+extension AlarmListTableViewController: SwitchTableViewCellDelegate, AlarmScheduler {
+    func switchCellSwitchValueChanged(cell: SwitchTableViewCell) {
+        
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        
+        let alarm = AlarmController.shared.alarms[indexPath.row]
+        
+        AlarmController.shared.toggleIsOn(for: alarm)
+        
+        if alarm.enabled {
+            scheduleUserNotifications(for: alarm)
+        } else {
+            cancelUserNotifications(for: alarm)
+        }
+        
+        cell.updateViews()
+    }
+    
+    
+}
