@@ -22,7 +22,7 @@ Students who complete this project independently are able to:
 * Create model object controllers that use `JSONEncoder` and `JSONDecoder` for data persistence
 * Schedule and cancel `UserNotifications`
 * Create custom protocols
-* Implement protocol functions using protocol extensions to define protcol function behavior across all conforming types
+* Implement protocol functions using protocol extensions to define protocol function behavior across all conforming types
 
 ## Part One - Intermediate TableViews, Delegate Pattern
 
@@ -75,7 +75,7 @@ Create an `Alarm.swift` which will contain our Alarm model object.  Alarms shoul
 1. Add a property called `fireDate` which stores a `Date` representing the time the alarm will go off , a property called `name` of type `String`, and a property called `enabled` of type`Bool` that we will set to true if the alarm is enabled and false otherwise.
 2. Add a property called uuid of type `String`.  Give the uuid property a default value of `UUID().uuidString` in the memberwise initializer. This will make it so that when called, the initializer won't ask you to provide a value for the uuid property. A UUID is a Universally Unique Identifier. The `uuid` on the Alarm object will be used later to schedule and cancel local notifications
 4. Add a computed property called `fireTimeAsString` which will return a `String` representation of the time you want the alarm to fire. This is simply for the UI.
-*note: Use Apple's DateFormater class to return a String from your existing  `fireDate` property.
+*note: Use Apple's DateFormatter class to return a String from your existing  `fireDate` property.
 *Please Read: https://developer.apple.com/documentation/foundation/dateformatter
 
 ### AlarmController (Model Controller Object)
@@ -105,7 +105,7 @@ There are many ways to add mock data to model object controllers. We will do so 
 ### Wire up the Alarm List Table View and implement the property observer pattern on the `SwitchTableViewCell` class.
 
 Fill in the table view data source functions required to display the view.
-*note: these implementation will be very similar to your Journal application with the exception of the `cellForRowAt`.  Insead of setting the `cell.textLabel.text` property directly from the tableViewController, you will pass an alarm object into a variable within your custom cell class i.e. `cell.alarm = alarm`
+*note: these implementation will be very similar to your Journal application with the exception of the `cellForRowAt`.  Instead of setting the `cell.textLabel.text` property directly from the tableViewController, you will pass an alarm object into a variable within your custom cell class i.e. `cell.alarm = alarm`
 
 Your custom cell should follow the 'updateViews' pattern for updating the view elements with the details of a model object. To follow this pattern, the developer adds an 'updateViews' function that checks for a model object. The function updates the view with details from the model object.
 
@@ -161,7 +161,7 @@ Fill in the `prepare(for segue: UIStoryboardSegue, sender: Any?)` function on th
 
 Fill in the `saveButtonTapped` function on the detail view so that you can add new alarms and edit existing alarms.
 
-2. Unwrap `alarm` and if there is an alarm, call the `.update(alarm: , name: , fireDate: , enabled: )` function from the `AlarmController` and pass in the tite from the text field, the fireDate from the datePicker, and the enabled from the `alarmIsOn` property.
+2. Unwrap `alarm` and if there is an alarm, call the `.update(alarm: , name: , fireDate: , enabled: )` function from the `AlarmController` and pass in the title from the text field, the fireDate from the datePicker, and the enabled from the `alarmIsOn` property.
 3. If there is no alarm, call the ` addAlarm(fireDate: , name: , enabled: )` function to create and add a new alarm.
 * note: You should be able to run the project and have what appears to be a fully functional app. You should be able to add, edit, delete, and enable/disable alarms. We have not yet covered how to alert the user when time is up, or persist the alarms.
 
@@ -169,7 +169,7 @@ Fill in the `saveButtonTapped` function on the detail view so that you can add n
 
 ### Conform to the Codable Protocol
 
-Make sure your `Alarm` object conforom to the Codable protocol so that we can persist alarms across app launches using JSONEncoder and JSONDecoder.
+Make sure your `Alarm` object conform to the Codable protocol so that we can persist alarms across app launches using JSONEncoder and JSONDecoder.
 
 1. Adopt the Codable protocol on your Alarm Model.  You should review Codable Protocol in the documentation before continuing.
 
@@ -182,7 +182,7 @@ Add persistence using apple's FileManager API, Codable, and JSONEncoder and Deco
 3. Write a function called `loadFromPersistentStorage()` that will load saved Alarm objects and set self.alarms (source of truth) to the results
 4. Call the `loadFromPersistentStorage()` function when the AlarmController is initialized or in the AppDelegates `application(_:didFinishLaunchingWithOptions:)`
 5. Call the `saveToPersistentStorage()` any time that the list of alarms is modified
-*note: the list of alarms is modified in all of the CRUD fucntions for this app.
+*note: the list of alarms is modified in all of the CRUD functions for this app.
 * note: You should now be able to see that your alarms are saved between app launches.
 
 ### Register the App for UserNotifications
@@ -190,7 +190,7 @@ Add persistence using apple's FileManager API, Codable, and JSONEncoder and Deco
 Register for local notifications when the app launches.
 
 1. In the `AppDelegate.swift` file, import `UserNotifications`. Then in the `application(_:didFinishLaunchingWithOptions:)` function, request notification authorization on an instance of `UNUserNotificationCenter`.
-* note: See UserNotifications Documentation for furthur instrution: https://developer.apple.com/documentation/usernotifications/asking_permission_to_use_notifications
+* note: See UserNotifications Documentation for further instruction: https://developer.apple.com/documentation/usernotifications/asking_permission_to_use_notifications
 
 ### Schedule and Cancel Local Notifications using a Custom Protocol and Extension
 
