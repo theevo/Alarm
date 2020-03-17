@@ -105,6 +105,7 @@
 		AC775083240DEEA700641A1F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AC9CA84C2420606B0054AA35 /* SubViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -114,7 +115,6 @@
 			children = (
 				AC77508C240DFB4C00641A1F /* AlarmListTableViewController.swift */,
 				AC775090240DFF6B00641A1F /* AlarmDetailTableViewController.swift */,
-				AC77508E240DFDCE00641A1F /* SwitchTableViewCell.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -125,6 +125,14 @@
 				AC77508A240DFB1400641A1F /* AlarmController.swift */,
 			);
 			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		AC9CA84C2420606B0054AA35 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				AC77508E240DFDCE00641A1F /* SwitchTableViewCell.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -8,14 +8,14 @@
 
 import UIKit
 
-class AlarmDetailTableViewController: UITableViewController {
+class AlarmDetailTableViewController: UITableViewController, AlarmScheduler {
+    
     // MARK: - properties
     var alarm: Alarm? {
         didSet {
             alarmIsOn = alarm?.enabled ?? true
             loadViewIfNeeded() //why is this safest??
-            updateViews() // q: why do we call this here?
-            //why isnt updateAlarm called here?
+            updateViews()
             }
     }
     var alarmIsOn: Bool = true
@@ -42,16 +42,20 @@ class AlarmDetailTableViewController: UITableViewController {
         alarmIsOn = !alarmIsOn
         updateAlarm()
     }
+    
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let alarmTitle = alarmName.text,
-            let dateTitle = timePicker?.date else {return}
+            let fireDate = timePicker?.date else {return}
         
-        // UPDATE
         if let alarm = alarm {
-            AlarmController.shared.update(alarm: alarm, fireDate: dateTitle, name: alarmTitle, enabled: alarmIsOn)
+            // UPDATE
+            AlarmController.shared.update(alarm: alarm, fireDate: fireDate, name: alarmTitle, enabled: alarmIsOn)
+            
+            toggleAlarmNotification(for: alarm)
         } else {
             // CREATE
-            AlarmController.shared.addAlarm(fireDate: dateTitle, name: alarmTitle, enabled: alarmIsOn)
+            let alarm = AlarmController.shared.addAlarm(fireDate: fireDate, name: alarmTitle, enabled: alarmIsOn)
+            toggleAlarmNotification(for: alarm)
         }
         navigationController?.popViewController(animated: true)
     }
@@ -80,6 +84,14 @@ class AlarmDetailTableViewController: UITableViewController {
         } else {
             alarmButton.setTitle("Turn ON", for: .normal)
             alarmButton.backgroundColor = .green
+        }
+    }
+    
+    func toggleAlarmNotification(for alarm: Alarm) {
+        if alarmIsOn {
+            scheduleUserNotifications(for: alarm)
+        } else {
+            cancelUserNotifications(for: alarm)
         }
     }
 }

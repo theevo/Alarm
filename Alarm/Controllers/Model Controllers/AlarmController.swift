@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UserNotifications
 
 class AlarmController {
     //source of truth
@@ -29,19 +30,19 @@ class AlarmController {
     
     // MARK: - Mock data
     var mockAlarms: [Alarm] {
-//        let sixThirty = Da
+        //        let sixThirty = Da
         let wakeUp = Alarm(fireDate: Date(), name: "Rise and Shine", enabled: true)
         let classTime = Alarm(fireDate: Date(), name: "Class Time", enabled: false)
         return [wakeUp, classTime]
     }
     
     init() {
-     self.alarms = self.mockAlarms
-    loadFromPersistence()
+        self.alarms = self.mockAlarms
+        loadFromPersistence()
     }
     
     // MARK: - CRUD
-    //Create
+    // Create
     func addAlarm(fireDate: Date, name: String, enabled: Bool) -> Alarm {
         let alarm = Alarm(fireDate: fireDate, name: name, enabled: enabled)
         alarms.append(alarm)
@@ -49,25 +50,26 @@ class AlarmController {
         return alarm
     }
     
-    //Update
+    // Update
     func update(alarm: Alarm, fireDate: Date, name: String, enabled: Bool) {
         alarm.fireDate = fireDate
         alarm.name = name
         alarm.enabled = enabled
         saveToPersistentStorage(alarms: alarms)
-        }
-    //Delete
+    }
+    
+    func toggleIsOn(for alarm: Alarm) {
+        alarm.enabled = !alarm.enabled
+        saveToPersistentStorage(alarms: alarms)
+    }
+    
+    // Delete
     func delete(alarm: Alarm) {
         guard let index = alarms.firstIndex(of: alarm) else {return}
         alarms.remove(at: index)
         saveToPersistentStorage(alarms: alarms)
     }
     
-    static func toggleIsOn(for alarm: Alarm) {
-        alarm.enabled = !alarm.enabled
-    }
-    
-    // MARK: - Persistance
     //MARK: - Persistence
     func fileURL() -> URL {
         let urls = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -95,4 +97,40 @@ class AlarmController {
             print("\(error.localizedDescription) -> \(error)")
         }
     }
-}//End of Class
+} // end class AlarmController
+
+
+protocol AlarmScheduler {
+    func scheduleUserNotifications(for alarm: Alarm)
+    func cancelUserNotifications(for alarm: Alarm)
+}
+
+extension AlarmScheduler {
+    
+    func scheduleUserNotifications(for alarm: Alarm) {
+        let content = UNMutableNotificationContent()
+        content.title = alarm.name
+        content.body = alarm.fireTimeAsString
+        content.sound = UNNotificationSound.default
+        
+        let alarmDateComponent = Calendar.current.dateComponents([.hour, .minute], from: alarm.fireDate)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: alarmDateComponent, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: alarm.uuid, content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request) { (error) in
+            if let error = error {
+                print("==================================")
+                print("Unable to add notification request, \(error.localizedDescription)")
+            }
+            
+        }
+        
+    }
+    
+    func cancelUserNotifications(for alarm: Alarm) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [alarm.uuid])
+    }
+    
+} // end extension AlarmScheduler

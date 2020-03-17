@@ -14,17 +14,15 @@ class AlarmListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Hello")
-//        print(AlarmController.shared.alarms[0].name)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
-    }
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 150.0
+//    }
     
     // MARK: - Table view data source
 
